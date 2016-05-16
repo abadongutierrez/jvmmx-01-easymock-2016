@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>reveal.js</title>
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/simple.css">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h1>Tests Doubles & EasyMock</h1>
+                    <p>
+                        <small>Created by Rafael Guti&eacute;rrez / <a href="http://twitter.com/abaddon_gtz">@abaddon_gtz</a> / rgutierrez@nearsoft.com</small>
+                    </p>
+                    <p>
+                        <small>May 2016, JVMMX @ Nearsoft</small>
+                    </p>
+                </section>
+                <section>
+                    <h2>EasyMock</h2>
+                    <p class="fragment">EasyMock has been the first dynamic Mock Object generator, relieving users of hand-writing Mock Objects, or generating code for them.</p>
+                    <p class="fragment">EasyMock provides Mock Objects by generating them on the fly using Java proxy mechanism.<p>
+                </section>
+                <section>
+                    <h2>Mock?</h2>
+                    <p class="fragment">What is a Mock?<p>
+                    <p class="fragment">Are you mocking me?<p>
+                </section>
+                <section>
+                    <section>
+                        <h2>Mock</h2>
+                    </section>
+                    <section>
+                        <h3>Wikipedia</h3>
+                        <p class="fragment">In object-oriented programming, mock objects are simulated objects that mimic the behavior of real objects in controlled ways.<p>
+                    </section>
+                    <section>
+                        <h3>Googling: <a href="http://martinfowler.com/articles/mocksArentStubs.html">Mocks Aren't Stubs - Martin Fowler</a></h3>
+                        <p class="fragment">"However to fully understand the way people use mocks it is important to understand mocks and other kinds of test doubles."</p>
+                    </section>
+                    <section>
+                        <h3>What is a Test Double!?</h3>
+                        <p class="fragment">Mocks and now Test Doubles!, really?!</p>
+                    </section>
+                </section>
+                <section>
+                    <h2>Test Doubles</h2>
+                    <p class="fragment">They are also known as: Imposters.</p>
+                    <p>...</p>
+                </section>
+                <section>
+                    <section>
+                        <h2>Why do you need a test double?</h2>
+                        <p class="fragment">Basically, to isolate the code you want to test from its surroundings</p>
+                        <p></p>
+                    </section>
+                    <section>
+                        <h3>Speed up test execution</h3>
+                        <p class="fragment">A test double’s implementation is often faster to execute than the real thing.</p>
+                        <p class="fragment">A complex algorithm could take minutes to run, and minutes is FOREVER when we as developers want immediate feedback by running automated tests.</p>
+                        <p class="fragment">You have to test those slow algorithms somewhere but not everywhere.</p>
+                    </section>
+                    <section>
+                        <h3>Make execution deterministic</h3>
+                        <p class="fragment">When your code (and tests) is deterministic, you can run your tests repeatedly againts the same code and you will always get the same result.</p>
+                        <p class="fragment">Obviously, this is not always the case. What happen when your code has nondeterministic behaviour: random behaviour, time-depending behaviour?</p>
+                        <p class="fragment">Test doubles can lend a hand with these kinds of sources for nondeterministic behavior.</p>
+                    </section>
+                    <section>
+                        <h3>Simulating special conditions</h3>
+                        <p class="fragment">There is always some conditions we can’t create using just the APIs and features of our production code.</p>
+                        <p class="fragment">This happens when our code depends on a third party API, internet connection, an specific file in some location, etc, etc.</p>
+                    </section>
+                    <section>
+                        <h3>Exposing hidden information</h3>
+                        <p class="fragment">What information? information about the interactions between the code under test and its collaborators.</p>
+                        <p class="fragment">Encapsulation and information hiding is a good thing in your code but complicates testing.</p>
+                        <p class="fragment">You can always add methods for testing purposes to your production code. But, what if you don’t want to litter your production code with those?</p>
+                        <p class="fragment">By substituting a test double for the real implementation, you can add that for-testing-only method to test code and avoid littering your production.</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Types of Test Doubles</h2>
+                        <p>Testing imposters!</p>
+                        <p>
+                    </section>
+                    <section>
+                        <h2>Test Stub</h2>
+                    </section>
+                    <section>
+                        <h2>Test Spy</h2>
+                    </section>
+                    <section>
+                        <h2>Mock Object</h2>
+                    </section>
+                    <section>
+                        <h2>Fake Object</h2>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                history: true,
+
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: 'plugin/markdown/marked.js' },
+                    { src: 'plugin/markdown/markdown.js' },
+                    { src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ]
+            });
+        </script>
+    </body>
+</html>

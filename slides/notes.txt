@@ -1,0 +1,32 @@
+## EasyMock
+
+## Test Doubles
+
+They are also known as: Imposters.
+
+### Why do you need a test double?
+> To isolate the code you want to test from its surroundings
+
+Reasons:
+* Isolate the code under test
+* Speed up test execution
+* Make execution deterministic
+* Simulate special conditions
+* Gain access to hidden information
+
+#### Speed up test execution
+
+A test double’s implementation is often faster to execute than the real thing. Sometimes, a test double’s speed isn’t just a side effect but rather the primary reason for using a test double.
+
+A complex algorithm could take minutes to run, and minutes is FOREVER a developer wants immediate feedback by running automated tests.
+
+With a test double the unnecessary wait is avoided and tests run that much faster.
+
+You have to test those slow algorithms somewhere but not everywhere.
+
+### Make execution deterministric
+
+When your code (and tests) is deterministic, you can run your tests repeatedly againts the same code and you will always get the same result.
+
+Obviously, this is not always the case. What happen when your code has nondeterministic behaviour: random behaviour, time-depending behaviour.
+
