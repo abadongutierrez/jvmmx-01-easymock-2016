@@ -14,9 +14,11 @@ public class PaymentServiceImpl implements PaymentService {
       // some complex code
       PaymentTransaction paymentTransaction = new PaymentTransaction();
       // more some complex code
+
       Address billingAddress = customerService.getConfiguredBillingAddress(customer);
       Address shippingAddress = customerService.getConfiguredShippingAddress(customer);
       fraudDetectionService.verify(customer, billingAddress, shippingAddress, creditCard, paymentTransaction);
+
       // even more complex code
       return paymentTransaction;
    }

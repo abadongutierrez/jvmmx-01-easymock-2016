@@ -146,6 +146,40 @@ static &lt;T&gt; T EasyMock.mock(Class&lt;T&gt; toMock)
                         <p class="fragment">Exampe: <code>PaymentServiceImplChargeTest</code></p>
                     </section>
                     <section>
+                        <h3>Expectations</h3>
+                        <p class="fragment">In Record state the Mock Object does not behave like Mock Object, but it records method calls.</p>
+                        <p class="fragment">Only after calling <code>replay()</code>, it behaves like Mock Object checking whether the expected method class are really done.</p>
+                        <p class="fragment">This means that in record state is where we specify what we expect from the Mock Object.</p>
+                    </section>
+                    <section>
+                        <h3>Expectations</h3>
+                        <p class="fragment">In Record state the Mock Object does not behave like Mock Object, but it records method calls.</p>
+                        <p class="fragment">Only after calling <code>replay()</code>, it behaves like Mock Object checking whether the expected method class are really done.</p>
+                        <p class="fragment">This means that in record state is where we specify what we expect from the Mock Object.</p>
+                    </section>
+                    <section>
+                        <h3>Behavior of method calls</h3>
+                        <div class="fragment">
+                        <p>Use:</p>
+<pre>
+<code class="java">
+static &lt;T&gt; IExpectationSetters&lt;T&gt; expect(T value)
+static &lt;T&gt; IExpectationSetters&lt;T&gt; expectLastCall()
+</code>
+</pre>
+                        <p>To return a <code>IExpectationSetters</code> which we can use to setting expectations for an associated expected invocation.</p>
+                        </div>
+                    </section>
+                    <section>
+                        <h3><code>IExpectationSetters</code> to answer, return or throw something</h3>
+                    </section>
+                    <section>
+                        <h3><code>IExpectationSetters</code> to stub</h3>
+                    </section>
+                    <section>
+                        <h3><code>IExpectationSetters</code> to specify the number of calls</h3>
+                    </section>
+                    <section>
                         <h3>Mocks concrete Objects?</h3>
                     </section>
                 </section>

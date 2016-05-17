@@ -3,6 +3,7 @@ package com.jabaddon.easymock.mocking;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.easymock.EasyMock.mock;
 import static org.easymock.EasyMock.niceMock;
 import static org.easymock.EasyMock.replay;
 import static org.hamcrest.CoreMatchers.*;
@@ -16,7 +17,7 @@ public class PaymentServiceImplChargeTest {
    @Before
    public void setUp() throws Exception {
       // what if we change to mock?
-      customerService = niceMock(CustomerService.class);
+      customerService = mock(CustomerService.class);
       fraudDetectionService = niceMock(FraudDetectionService.class);
 
       paymentService = new PaymentServiceImpl(fraudDetectionService, customerService);
