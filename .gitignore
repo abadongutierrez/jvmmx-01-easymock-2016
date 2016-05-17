@@ -1,4 +1,9 @@
 *.class
+.idea/
+**/.idea/
+*.iml
+*.iws
+*.eml
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

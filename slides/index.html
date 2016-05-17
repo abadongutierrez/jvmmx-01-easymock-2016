@@ -120,8 +120,33 @@
                         <h2>EasyMock by Example</h2>
                     </section>
                     <section>
-                        <h3>Mocking</h3>
-
+                        <h3>Create a Mock Object</h3>
+                        <div class="fragment">
+                        <p>1. Create Mock Object</p>
+<pre>
+<code class="java">
+static &lt;T&gt; T EasyMock.mock(Class&lt;T&gt; toMock)
+</code>
+</pre>
+                        </div>
+                        <p class="fragment">2. Record the expected behaviour</p>
+                        <p class="fragment">3. Switch the Mock Object to replay state</p>
+                        <p class="fragment">Exampe: <code>UserServiceImplFindByIdTest</code></p>
+                    </section>
+                    <section>
+                        <h3>Strick Mocks</h3>
+                        <p class="fragment">When using <code>EasyMock.mock()</code> the order of method calls is not checked.</p>
+                        <p class="fragment">Use <code>EasyMock.strictMock()</code> to create a Mock Object that check the order of method calls.</p>
+                        <p class="fragment">Exampe: <code>UserServiceImplActivateTest</code></p>
+                    </section>
+                    <section>
+                        <h3>Nice Mocks</h3>
+                        <p class="fragment">Mock Objects created with <code>EasyMock.mock()</code> will throw <code>AssertionError</code> for all unexpected calls.</p>
+                        <p class="fragment">A Nice Mocks allows all method calls and returns appropriate empty values (0, null, false) for unexpected method calls.</p>
+                        <p class="fragment">Exampe: <code>PaymentServiceImplChargeTest</code></p>
+                    </section>
+                    <section>
+                        <h3>Mocks concrete Objects?</h3>
                     </section>
                 </section>
             </div>
