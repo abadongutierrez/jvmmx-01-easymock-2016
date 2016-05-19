@@ -152,12 +152,6 @@ static &lt;T&gt; T EasyMock.mock(Class&lt;T&gt; toMock)
                         <p class="fragment">This means that in record state is where we specify what we expect from the Mock Object.</p>
                     </section>
                     <section>
-                        <h3>Expectations</h3>
-                        <p class="fragment">In Record state the Mock Object does not behave like Mock Object, but it records method calls.</p>
-                        <p class="fragment">Only after calling <code>replay()</code>, it behaves like Mock Object checking whether the expected method class are really done.</p>
-                        <p class="fragment">This means that in record state is where we specify what we expect from the Mock Object.</p>
-                    </section>
-                    <section>
                         <h3>Behavior of method calls</h3>
                         <div class="fragment">
                         <p>Use:</p>
@@ -172,16 +166,71 @@ static &lt;T&gt; IExpectationSetters&lt;T&gt; expectLastCall()
                     </section>
                     <section>
                         <h3><code>IExpectationSetters</code> to answer, return or throw something</h3>
+                        <div class="fragment">
+<pre><code>
+IExpectationSetters&lt;T&gt; andAnswer(IAnswer&lt;? extends T&gt; answer)
+IExpectationSetters&lt;T&gt; andReturn(T value)
+IExpectationSetters&lt;T&gt; andThrow(Throwable throwable)
+</code></pre>
+                        </div>
+                        <p class="fragment">Example: <code>IExpectationSettersToAnswerReturnOrThrowTest</code></p>
                     </section>
                     <section>
-                        <h3><code>IExpectationSetters</code> to stub</h3>
+                        <h3><code>IExpectationSetters</code> to stub responses</h3>
+                        <p class="fragment">We stub to respond to some method calls, but we are not interested in how often they are called, when they are called, or even if they are called at all.<p>
+                        <div class="fragment">
+<pre><code>
+IExpectationSetters&lt;T&gt; andStubAnswer(IAnswer&lt;? extends T&gt; answer)
+IExpectationSetters&lt;T&gt; andStubReturn(T value)
+IExpectationSetters&lt;T&gt; andStubThrow(Throwable throwable)
+</code></pre>
+                        </div>
+                        <p class="fragment">Example: <code>IExpectationSettersToStubTest</code></p>
                     </section>
                     <section>
-                        <h3><code>IExpectationSetters</code> to specify the number of calls</h3>
+                        <h3><code>IExpectationSetters</code> to specify the number of calls and <code>verify()</code></h3>
+                        <div class="fragment">
+<pre><code>
+IExpectationSetters&lt;T&gt; times(int count)
+IExpectationSetters&lt;T&gt; times(int min, int max)
+IExpectationSetters&lt;T&gt; once()
+IExpectationSetters&lt;T&gt; atLeastOnce()
+IExpectationSetters&lt;T&gt; anyTimes()
+</code></pre>
+                        <p>In EasyMock:</p>
+<pre><code>
+static void verify(Object... mocks)
+</code></pre>
+                        </div>
+                        <p class="fragment">Example: <code>IExpectationSettersNumCallsTest</code></p>
+                    </section>
+                    <section>
+                        <h3>Expectations with Argument Matchers</h3>
+                        <p class="fragment">Object arguments are compared using <code>equals()</code> when matching method calls in Mock Objects.</p>
+                        <p class="fragment">This could lead to some issues or maybe we could need a more flexible way to match method calls.</p>
+                        <p class="fragment"><code>EasyMock</code> class contains a lot of predefined argument matchers for us to use!</p>
+                        <p class="fragment">Example: <code>EasyMockArgumentMatchersTest</code></p>
+                    </section>
+                    <section>
+                        <h3>Capturing Arguments</h3>
+                        <p class="fragment">You can capture the arguments passed to Mock Objects.</p>
+                        <div class="fragment">
+                        <p>In <code>EasyMock</code></p>
+<pre><code>
+static &lt;T&gt; T capture(Capture&lt;T&gt; captured)
+static x captureX(Capture&lt;X&gt; captured) // for primitives
+</code></pre>
+                        </div>
+                        <p class="fragment">Matches any value and captures it in the <code>Capture</code> parameter for later access. You can also specify a <code>CaptureType</code> telling that a given Capture should keep the first, the last, all or no captured values.</p>
+                        <p class="fragment">Example: <code>CapturingArgumentsTest</code></p>
                     </section>
                     <section>
                         <h3>Mocks concrete Objects?</h3>
+                        <p class="fragment">Yes!</p>
                     </section>
+                </section>
+                <section>
+                    <h2>Thanks!</h2>
                 </section>
             </div>
         </div>

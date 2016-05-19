@@ -3,11 +3,8 @@ package com.jabaddon.easymock.mocking;
 import org.easymock.IAnswer;
 import org.junit.Test;
 
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.mock;
-import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.*;
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 
 public class IExpectationSettersToAnswerReturnOrThrowTest {
@@ -19,6 +16,8 @@ public class IExpectationSettersToAnswerReturnOrThrowTest {
       expect(userService.findById(1L)).andAnswer(new IAnswer<User>() {
          @Override
          public User answer() throws Throwable {
+            // we have access to method arguments!
+            System.out.println("Id is: " + getCurrentArguments()[0]);
             User user = new User();
             user.setId(101L);
             return user;
