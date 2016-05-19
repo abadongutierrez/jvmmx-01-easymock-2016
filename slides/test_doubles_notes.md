@@ -25,7 +25,29 @@ obtained.
 * In the fourth phase (Teardown), we tear down the text fixture to put the worl back to the state in which
 we found it.
 
-A test fixture is a fixed state of a set of objects used as a baseline for running tests.
+A __test fixture__ is a fixed state of a set of objects used as a baseline for running tests.
+
+## What are indirect inputs and outputs?
+
+The depended-on component (DOC) may return values or throw exceptions that affect the behavior of the SUT, but it may prove difficult or impossible to cause certain cases to occur. The indirect inputs received from the DOC may be unpredictable (such as the system clock or calendar).
+
+### Why Do We Care about Indirect Inputs?
+
+Calls to DOCs often return objects or values, update their arguments or even throw exceptions. Many of the execution paths within the SUT are intended to deal with these return values and to handle the possible exceptions.
+
+*Not all inputs of the SUT come from the test. Some indirect inputs come from other components called by the SUT in the form of return values, updated parameters, or exceptions thrown.*
+
+### Why Do We Care about Indirect Outputs?
+
+The concept of encapsulation often directs us to not care about how something is implemented. After all, that is the whole purpose of encapsulation.
+
+Consider for a moment a component that has a method in its API that returns nothing—or at least nothing that can be used to determine whether it has performed its function correctly. In this situation, we have no choice but to test through the back door.
+
+A client of the logger may specify that the logger be called when certain conditions are met. These calls will not be visible on the client's interface but would typically be a requirement that the client needs to satisfy and, therefore, would be something we want to test. The circumstances that should result in a messaging being logged are indirect output test conditions (Figure 11.2) for which we need to write tests so that we can avoid having Untested Requirements (see Production Bugs).
+
+*Not all outputs of the SUT are directly visible to the test. Some indirect outputs are sent to other components in the form of method calls or messages.*
+
+In other cases, the SUT does produce visible behavior that can be verified through the front door but also has some expected side effects. Both outputs need to be verified in our tests.
 
 ## Test Stub
 
