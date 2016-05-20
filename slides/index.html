@@ -35,8 +35,7 @@
                 </section>
                 <section>
                     <h2>EasyMock</h2>
-                    <p class="fragment">EasyMock has been the first dynamic Mock Object generator, relieving users of hand-writing Mock Objects, or generating code for them.</p>
-                    <p class="fragment">EasyMock provides Mock Objects by generating them on the fly using Java proxy mechanism.<p>
+                    <p class="fragment">EasyMock is the first dynamic Mock Object generator, relieving users of hand-writing Mock Objects, or generating code for them.</p>
                 </section>
                 <section>
                     <h2>Mock?</h2>
@@ -63,7 +62,10 @@
                 <section>
                     <h2>Test Doubles</h2>
                     <p class="fragment">They are also known as: Imposters.</p>
-                    <p>...</p>
+                    <p class="fragment">SUT is a System under test.</p>
+                    <p class="fragment">DOC is a Depended-on Component.</p>
+                    <p class="fragment">Tests Doubles are like Stunt Doubles in filming industry.</p>
+                    <p class="fragment">The movie is the SUT and the leading actor is the real DOC.</p>
                 </section>
                 <section>
                     <section>
@@ -80,7 +82,7 @@
                     <section>
                         <h3>Make execution deterministic</h3>
                         <p class="fragment">When your code (and tests) is deterministic, you can run your tests repeatedly againts the same code and you will always get the same result.</p>
-                        <p class="fragment">Obviously, this is not always the case. What happen when your code has nondeterministic behaviour: random behaviour, time-depending behaviour?</p>
+                        <p class="fragment">What happen when your code has nondeterministic behaviour: random behaviour, time-depending behaviour?</p>
                         <p class="fragment">Test doubles can lend a hand with these kinds of sources for nondeterministic behavior.</p>
                     </section>
                     <section>
@@ -92,27 +94,68 @@
                         <h3>Exposing hidden information</h3>
                         <p class="fragment">What information? information about the interactions between the code under test and its collaborators.</p>
                         <p class="fragment">Encapsulation and information hiding is a good thing in your code but complicates testing.</p>
-                        <p class="fragment">You can always add methods for testing purposes to your production code. But, what if you don’t want to litter your production code with those?</p>
-                        <p class="fragment">By substituting a test double for the real implementation, you can add that for-testing-only method to test code and avoid littering your production.</p>
+                        <p class="fragment">You could (<span style="color: red;">please don't!</span>) add methods for testing purposes to your production code. By substituting a test double for the real implementation, you can add code for-testing-only and avoid littering your production code.</p>
                     </section>
                 </section>
                 <section>
                     <section>
                         <h2>Types of Test Doubles</h2>
-                        <p>Testing imposters!</p>
-                        <p>
                     </section>
                     <section>
-                        <h3>Test Stub</h2>
+                        <h3>Wait, before it is important to understand</h2>
+                        <img data-src="img/inputs_outputs.png" alt="Input & Outputs">
                     </section>
                     <section>
-                        <h3>Test Spy</h2>
+                        <h3>Test Stub (I)</h2>
+                        <p class="fragment">Also known as: Stub</p>
+                        <p class="fragment">With a Test Stub we can verify logic independently when the SUT depends on <b>indirect inputs</b> from other software components.</p>
+                        <p class="fragment">We use a Test Stub when we need to control the indirect inputs of the SUT.</p>
                     </section>
                     <section>
-                        <h3>Mock Object</h2>
+                        <h3>Test Stub (II)</h2>
+                        <p class="fragment">There some variations:</p>
+                        <p class="fragment">A <b>Responder</b> is used to inject <b>valid indirect inputs</b> into the SUT.</p>
+                        <p class="fragment">A <b>Saboteur</b> is used to inject <b>invalid indirect inputs</b> into the SUT.</p>
+                        <p class="fragment">Other variations: <b>Temporary Test Stub</b>, <b>Procedural Test Stub</b> & <b>Entity Chain Snipping</b></p>
                     </section>
                     <section>
-                        <h3>Fake Object</h2>
+                        <h3>Test Spy (I)</h2>
+                        <p class="fragment">Also know as: Spy or Recording Test Stub</p>
+                        <p class="fragment">With a Test Spy we can verify logic independently when the SUT has <b>indirect outputs</b> to other software components.</p>
+                        <p class="fragment">We use a Test Spy as an observation point to capture the indirect outputs for later verification.</p>
+                    </section>
+                    <section>
+                        <h3>Test Spy (II)</h2>
+                        <p class="fragment">There some variations:</p>
+                        <p class="fragment"><b>Retrieval Interface</b> is a Test Spy with an interface specifically designed to expose the recorded information.</p>
+                        <p class="fragment"><b>Self Shunt</b> collapses the Test Spy and the Testcase Class into a single object. When SUT calls DOC it is actually calling methods in the Testcase Object.</p>
+                        <p class="fragment">Other variations: <b>Inner Test Double</b> & <b>Indirect Output Registry</b></p>
+                    </section>
+                    <section>
+                        <h3>Mock Object (I)</h2>
+                        <p class="fragment">With a Mock Object we can implement <b>Behaviour Verification</b> on the SUT.</p>
+                        <p class="fragment">We configure the Mock Object with the expected method calls and values with it should respond.</p>
+                        <p class="fragment">When exercising the SUT the Mock Object compares the actual with the expected arguments and method calls and fails if they do not match.</p>
+                        <p class="fragment">No need for assertions in the test method!</p>
+                    </section>
+                    <section>
+                        <h3>Mock Object (II)</h2>
+                        <p class="fragment">Mocks could be <b>strict</b> or <b>nice</b>.</p>
+                        <p class="fragment">Strict Mocks if the calls are received in a different order than the expected. Nice Mocks tolerates out-of-order calls.</p>
+                        <p class="fragment">Tests written using Mock Objects look different because all the expected behavior must be specified before the SUT is exercised.</p>
+                    </section>
+                    <section>
+                        <h3>Fake Object (I)</h2>
+                        <p class="fragment">Also know as: Dummy</p>
+                        <p class="fragment">We use a Fake Object to replace the component the SUT depends with a much lighter-weight implementation.</p>
+                        <p class="fragment">The Fake Object only needs to provide the equivalent services the real DOC provides.</p>
+                    </section>
+                    <section>
+                        <h3>Fake Object (II)</h2>
+                        <p class="fragment">There some variations:</p>
+                        <p class="fragment"><b>Fake Databases</b> replace the persistent layer with a Fake Object that is functionally equivalent. When replacing the database with in-memory HashTables or Lists.</p>
+                        <p class="fragment"><b>In-Memory Database</b> is a Dummy database with a small-footprint functionality.</p>
+                        <p class="fragment">Other variations: <b>Fake Web Service</b> & <b>Fake Service Layer</b></p>
                     </section>
                 </section>
                 <section>
@@ -131,19 +174,19 @@ static &lt;T&gt; T EasyMock.mock(Class&lt;T&gt; toMock)
                         </div>
                         <p class="fragment">2. Record the expected behaviour</p>
                         <p class="fragment">3. Switch the Mock Object to replay state</p>
-                        <p class="fragment">Exampe: <code>UserServiceImplFindByIdTest</code></p>
+                        <p class="fragment">Example: <code>UserServiceImplFindByIdTest</code></p>
                     </section>
                     <section>
                         <h3>Strick Mocks</h3>
                         <p class="fragment">When using <code>EasyMock.mock()</code> the order of method calls is not checked.</p>
                         <p class="fragment">Use <code>EasyMock.strictMock()</code> to create a Mock Object that check the order of method calls.</p>
-                        <p class="fragment">Exampe: <code>UserServiceImplActivateTest</code></p>
+                        <p class="fragment">Example: <code>UserServiceImplActivateTest</code></p>
                     </section>
                     <section>
                         <h3>Nice Mocks</h3>
                         <p class="fragment">Mock Objects created with <code>EasyMock.mock()</code> will throw <code>AssertionError</code> for all unexpected calls.</p>
                         <p class="fragment">A Nice Mocks allows all method calls and returns appropriate empty values (0, null, false) for unexpected method calls.</p>
-                        <p class="fragment">Exampe: <code>PaymentServiceImplChargeTest</code></p>
+                        <p class="fragment">Example: <code>PaymentServiceImplChargeTest</code></p>
                     </section>
                     <section>
                         <h3>Expectations</h3>
