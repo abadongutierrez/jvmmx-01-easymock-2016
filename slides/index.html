@@ -61,11 +61,14 @@
                 </section>
                 <section>
                     <h2>Test Doubles</h2>
-                    <p class="fragment">They are also known as: Imposters.</p>
-                    <p class="fragment">SUT is a System under test.</p>
-                    <p class="fragment">DOC is a Depended-on Component.</p>
-                    <p class="fragment">Tests Doubles are like Stunt Doubles in filming industry.</p>
-                    <p class="fragment">The movie is the SUT and the leading actor is the real DOC.</p>
+                    <p class="fragment">Imposters</p>
+                    <p class="fragment">Tests Doubles are like Stunt Doubles in filming industry</p>
+                    <p class="fragment">The movie is the SUT and the leading actor is the real DOC</p>
+                    <p class="fragment">SUT is a System under test</p>
+                    <p class="fragment">DOC is a Depended-on Component</p>
+
+                    <aside class="notes">
+                    </aside>
                 </section>
                 <section>
                     <section>
@@ -75,26 +78,45 @@
                     </section>
                     <section>
                         <h3>Speed up test execution</h3>
-                        <p class="fragment">A test double’s implementation is often faster to execute than the real thing.</p>
-                        <p class="fragment">A complex algorithm could take minutes to run, and minutes is FOREVER when we as developers want immediate feedback by running automated tests.</p>
-                        <p class="fragment">You have to test those slow algorithms somewhere but not everywhere.</p>
+                        <p class="fragment">A test double’s implementation is faster to execute</p>
+                        <p class="fragment">Minutes is FOREVER when we as developers want immediate feedback by running automated tests</p>
+                        <p class="fragment">Test those slow algorithms somewhere but not everywhere</p>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>A test double’s implementation is often faster to execute than the real thing.</li>
+                                <li>A complex algorithm could take minutes to run, and minutes is FOREVER when we as developers want immediate feedback by running automated tests.</li>
+                                <li>Tests are fast to execute? we as developers will run them more often</li>
+                                <li>Probably group slow tests to run them only in special servers</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
                         <h3>Make execution deterministic</h3>
-                        <p class="fragment">When your code (and tests) is deterministic, you can run your tests repeatedly againts the same code and you will always get the same result.</p>
-                        <p class="fragment">What happen when your code has nondeterministic behaviour: random behaviour, time-depending behaviour?</p>
-                        <p class="fragment">Test doubles can lend a hand with these kinds of sources for nondeterministic behavior.</p>
+                        <p class="fragment">Deterministic code produces the same result with the same input</p>
+                        <p class="fragment">Random behaviour, Time-depending behaviour?</p>
+                        <p class="fragment">Test doubles can lend a hand with these kinds of sources for nondeterministic behavior</p>
+
+                        <aside class="notes">
+                        </aside>
                     </section>
                     <section>
                         <h3>Simulating special conditions</h3>
-                        <p class="fragment">There is always some conditions we can’t create using just the APIs and features of our production code.</p>
-                        <p class="fragment">This happens when our code depends on a third party API, internet connection, an specific file in some location, etc, etc.</p>
+                        <p class="fragment">There is always some conditions we can’t create using just the APIs and features of our production code</p>
+                        <p class="fragment">Code that depends on a third party API, internet connection, an specific file in some location, etc, etc.</p>
+
+                        <aside class="notes">
+                        </aside>
                     </section>
                     <section>
                         <h3>Exposing hidden information</h3>
-                        <p class="fragment">What information? information about the interactions between the code under test and its collaborators.</p>
-                        <p class="fragment">Encapsulation and information hiding is a good thing in your code but complicates testing.</p>
-                        <p class="fragment">You could (<span style="color: red;">please don't!</span>) add methods for testing purposes to your production code. By substituting a test double for the real implementation, you can add code for-testing-only and avoid littering your production code.</p>
+                        <p class="fragment">Information about the interactions between the code under test and its collaborators</p>
+                        <p class="fragment">Encapsulation and information hiding is a good thing in your code but complicates testing</p>
+                        <p class="fragment">Do not add test code into your production code!</p>
+                        <p class="fragment">With a Test Double you can add code for-testing-only purposes</p>
+
+                        <aside class="notes">
+                        </aside>
                     </section>
                 </section>
                 <section>
@@ -107,51 +129,64 @@
                     </section>
                     <section>
                         <h3>Test Stub (I)</h2>
-                        <p class="fragment">Also known as: Stub</p>
-                        <p class="fragment">With a Test Stub we can verify logic independently when the SUT depends on <b>indirect inputs</b> from other software components.</p>
-                        <p class="fragment">We use a Test Stub when we need to control the indirect inputs of the SUT.</p>
+                        <p class="fragment">Stub</p>
+                        <p class="fragment">Verify logic independently when the SUT depends on <b>indirect inputs</b> from other components</p>
+                        <p class="fragment">Use a Test Stub to control the indirect inputs into the SUT</p>
+
+                        <aside class="notes">
+                        </aside>
                     </section>
                     <section>
-                        <h3>Test Stub (II)</h2>
-                        <p class="fragment">There some variations:</p>
-                        <p class="fragment">A <b>Responder</b> is used to inject <b>valid indirect inputs</b> into the SUT.</p>
-                        <p class="fragment">A <b>Saboteur</b> is used to inject <b>invalid indirect inputs</b> into the SUT.</p>
-                        <p class="fragment">Other variations: <b>Temporary Test Stub</b>, <b>Procedural Test Stub</b> & <b>Entity Chain Snipping</b></p>
+                        <h3>Test Stub (II)</h3>
+                        <p class="fragment">Variations:</p>
+                        <p class="fragment">Responder - valid indirect inputs</p>
+                        <p class="fragment">Saboteur - invalid indirect inputs</p>
+                        <p class="fragment">Temporary Test Stub - a DOC that is not yet available</p>
+                        <p class="fragment">Procedural Test Stub - procedural programming language</p>
+                        <p class="fragment">Entity Chain Snipping - complex network of objects</p>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>A Responder is used to inject valid indirect inputs into the SUT.</li>
+                                <li>A Saboteur is used to inject invalid indirect inputs into the SUT.</li>
+                                <li>Other variations: Temporary Test Stub, Procedural Test Stub & Entity Chain Snipping</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
-                        <h3>Test Spy (I)</h2>
+                        <h3>Test Spy (I)</h3>
                         <p class="fragment">Also know as: Spy or Recording Test Stub</p>
                         <p class="fragment">With a Test Spy we can verify logic independently when the SUT has <b>indirect outputs</b> to other software components.</p>
                         <p class="fragment">We use a Test Spy as an observation point to capture the indirect outputs for later verification.</p>
                     </section>
                     <section>
-                        <h3>Test Spy (II)</h2>
+                        <h3>Test Spy (II)</h3>
                         <p class="fragment">There some variations:</p>
                         <p class="fragment"><b>Retrieval Interface</b> is a Test Spy with an interface specifically designed to expose the recorded information.</p>
                         <p class="fragment"><b>Self Shunt</b> collapses the Test Spy and the Testcase Class into a single object. When SUT calls DOC it is actually calling methods in the Testcase Object.</p>
                         <p class="fragment">Other variations: <b>Inner Test Double</b> & <b>Indirect Output Registry</b></p>
                     </section>
                     <section>
-                        <h3>Mock Object (I)</h2>
+                        <h3>Mock Object (I)</h3>
                         <p class="fragment">With a Mock Object we can implement <b>Behaviour Verification</b> on the SUT.</p>
                         <p class="fragment">We configure the Mock Object with the expected method calls and values with it should respond.</p>
                         <p class="fragment">When exercising the SUT the Mock Object compares the actual with the expected arguments and method calls and fails if they do not match.</p>
                         <p class="fragment">No need for assertions in the test method!</p>
                     </section>
                     <section>
-                        <h3>Mock Object (II)</h2>
+                        <h3>Mock Object (II)</h3>
                         <p class="fragment">Mocks could be <b>strict</b> or <b>nice</b>.</p>
                         <p class="fragment">Strict Mocks if the calls are received in a different order than the expected. Nice Mocks tolerates out-of-order calls.</p>
                         <p class="fragment">Tests written using Mock Objects look different because all the expected behavior must be specified before the SUT is exercised.</p>
                     </section>
                     <section>
-                        <h3>Fake Object (I)</h2>
+                        <h3>Fake Object (I)</h3>
                         <p class="fragment">Also know as: Dummy</p>
                         <p class="fragment">We use a Fake Object to replace the component the SUT depends with a much lighter-weight implementation.</p>
                         <p class="fragment">The Fake Object only needs to provide the equivalent services the real DOC provides.</p>
                     </section>
                     <section>
-                        <h3>Fake Object (II)</h2>
+                        <h3>Fake Object (II)</h3>
                         <p class="fragment">There some variations:</p>
                         <p class="fragment"><b>Fake Databases</b> replace the persistent layer with a Fake Object that is functionally equivalent. When replacing the database with in-memory HashTables or Lists.</p>
                         <p class="fragment"><b>In-Memory Database</b> is a Dummy database with a small-footprint functionality.</p>
