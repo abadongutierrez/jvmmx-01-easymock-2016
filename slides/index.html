@@ -155,42 +155,53 @@
                     </section>
                     <section>
                         <h3>Test Spy (I)</h3>
-                        <p class="fragment">Also know as: Spy or Recording Test Stub</p>
-                        <p class="fragment">With a Test Spy we can verify logic independently when the SUT has <b>indirect outputs</b> to other software components.</p>
-                        <p class="fragment">We use a Test Spy as an observation point to capture the indirect outputs for later verification.</p>
+                        <p class="fragment">Spy or Recording Test Stub</p>
+                        <p class="fragment">Verify logic independently when the SUT has <b>indirect outputs</b> to other software components</p>
+                        <p class="fragment">Use a Test Spy as an observation point to capture the indirect outputs for later verification</p>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Also know as: Spy or Recording Test Stub</li>
+                                <li>With a Test Spy we can verify logic independently when the SUT has <b>indirect outputs</b> to other software components.</li>
+                                <li>We use a Test Spy as an observation point to capture the indirect outputs for later verification.</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
                         <h3>Test Spy (II)</h3>
-                        <p class="fragment">There some variations:</p>
-                        <p class="fragment"><b>Retrieval Interface</b> is a Test Spy with an interface specifically designed to expose the recorded information.</p>
-                        <p class="fragment"><b>Self Shunt</b> collapses the Test Spy and the Testcase Class into a single object. When SUT calls DOC it is actually calling methods in the Testcase Object.</p>
-                        <p class="fragment">Other variations: <b>Inner Test Double</b> & <b>Indirect Output Registry</b></p>
+                        <p class="fragment">Variations:</p>
+                        <p class="fragment">Retrieval Interface - interface to expose the recorded information</p>
+                        <p class="fragment">Self Shunt (loopback) - collapses the Test Spy and the Testcase Class into a single object</p>
+                        <p class="fragment">Inner Test Double - anonymous inner class</p>
+                        <p class="fragment">Indirect Output Registry - store data in a well-known place</p>
                     </section>
                     <section>
                         <h3>Mock Object (I)</h3>
-                        <p class="fragment">With a Mock Object we can implement <b>Behaviour Verification</b> on the SUT.</p>
-                        <p class="fragment">We configure the Mock Object with the expected method calls and values with it should respond.</p>
-                        <p class="fragment">When exercising the SUT the Mock Object compares the actual with the expected arguments and method calls and fails if they do not match.</p>
-                        <p class="fragment">No need for assertions in the test method!</p>
+                        <p class="fragment">Implement <b>Behaviour Verification</b> on the SUT</p>
+                        <p class="fragment">Expected method calls and values with it should respond</p>
+                        <p class="fragment">Mock Object compares the actual with the expected arguments and method calls and fails if they do not match</p>
+                        <p class="fragment">No need for assertions in the test method</p>
                     </section>
                     <section>
                         <h3>Mock Object (II)</h3>
-                        <p class="fragment">Mocks could be <b>strict</b> or <b>nice</b>.</p>
-                        <p class="fragment">Strict Mocks if the calls are received in a different order than the expected. Nice Mocks tolerates out-of-order calls.</p>
-                        <p class="fragment">Tests written using Mock Objects look different because all the expected behavior must be specified before the SUT is exercised.</p>
+                        <p class="fragment"><b>Strict</b> or <b>Nice</b>.</p>
+                        <p class="fragment">Strict Mocks - does not tolerate different order than the expected</p>
+                        <p class="fragment">Nice Mocks - tolerates out-of-order calls</p>
+                        <p class="fragment">All the expected behavior must be specified before the SUT is exercised</p>
                     </section>
                     <section>
                         <h3>Fake Object (I)</h3>
-                        <p class="fragment">Also know as: Dummy</p>
-                        <p class="fragment">We use a Fake Object to replace the component the SUT depends with a much lighter-weight implementation.</p>
-                        <p class="fragment">The Fake Object only needs to provide the equivalent services the real DOC provides.</p>
+                        <p class="fragment">Dummy</p>
+                        <p class="fragment">Use a Fake Object to replace the component the SUT depends with a much lighter-weight implementation</p>
+                        <p class="fragment">Provide the equivalent services the real DOC provides</p>
                     </section>
                     <section>
                         <h3>Fake Object (II)</h3>
-                        <p class="fragment">There some variations:</p>
-                        <p class="fragment"><b>Fake Databases</b> replace the persistent layer with a Fake Object that is functionally equivalent. When replacing the database with in-memory HashTables or Lists.</p>
-                        <p class="fragment"><b>In-Memory Database</b> is a Dummy database with a small-footprint functionality.</p>
-                        <p class="fragment">Other variations: <b>Fake Web Service</b> & <b>Fake Service Layer</b></p>
+                        <p class="fragment">Variations:</p>
+                        <p class="fragment">Fake Databases - replace the persistent layer with in-memory HashTables or Lists</p>
+                        <p class="fragment">In-Memory Database - Dummy database with a small-footprint functionality</p>
+                        <p class="fragment">Fake Web Service - small hard-coded or data-driven implementation of real web service</p>
+                        <p class="fragment">Fake Service Layer - to testing user interfaces</p>
                     </section>
                 </section>
                 <section>
